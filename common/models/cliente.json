@@ -25,6 +25,14 @@
     "direccion": {
       "type": "string",
       "required": true
+    },
+    "telefono": {
+      "type": "number",
+      "required": true
+    },
+    "fax": {
+      "type": "string",
+      "required": true
     }
   },
   "validations": [],

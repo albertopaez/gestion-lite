@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
 import BootstrapTable from 'react-bootstrap-table-next';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
@@ -13,6 +13,23 @@ export default function Product (){
     const [editModal, setEditModal] = useState(false);
     const [selected, setSelected] = useState(false);
     const [actRowIndex, setActRowIndex] = useState(false)
+    const [product, setProduct] = useState([]);
+
+    function getProducts() {
+        axios
+            .get(`http://localhost:3000/api/articulos`)
+            .then(response => {
+                console.log(response.data);
+                setProduct(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+    useEffect(() => {
+        getProducts();
+    }, []);
 
     function showAddModal(){
         setAddModal(!addModal)
@@ -73,10 +90,10 @@ export default function Product (){
     dataField: 'id',
     text: 'ID Producto'
     }, {
-    dataField: 'name',
+    dataField: 'nombre',
     text: 'Nombre'
     }, {
-    dataField: 'price',
+    dataField: 'precio',
     text: 'Precio Unitario'
     }, {
         dataField: 'cantidad',
@@ -86,15 +103,7 @@ export default function Product (){
         text: 'IVA'
     }];
 
-    const products = [{
-        id: 1,
-        name: 'Palomitas',
-        price: '0.80'
-    }, {
-        id: 2,
-        name: 'Monster',
-        dni: '1',
-    }];
+    const products = product
 
     const selectRow = {
         mode: 'radio',
