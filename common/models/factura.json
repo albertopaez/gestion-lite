@@ -1,0 +1,77 @@
+{
+  "name": "factura",
+  "plural": "facturas",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "cliente": {
+      "nombre": {
+        "type": "string",
+        "required": true
+      },
+      "apellidos": {
+        "type": "string"
+      },
+      "cif": {
+        "type": "string",
+        "required": true
+      },
+      "localidad": {
+        "type": "string",
+        "required": true
+      },
+      "direccion": {
+        "type": "string",
+        "required": true
+      }
+    },
+    "empresa": {
+      "nombre": {
+        "type": "string",
+        "required": true
+      },
+      "cif": {
+        "type": "string",
+        "required": true
+      }
+    },
+    "articulo": {
+      "nombre": {
+        "type": "string",
+        "required": true
+      },
+      "precio": {
+        "type": "number",
+        "required": true
+      },
+      "iva": {
+        "type": "number",
+        "required": true
+      }
+    },
+    "numero": {
+      "type": "number"
+    },
+    "fecha": {
+      "type": "date",
+      "default": "$now"
+    },
+    "lugar": {
+      "type": "string",
+      "required": true,
+      "default": "Sevilla"
+    },
+    "descuento": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
