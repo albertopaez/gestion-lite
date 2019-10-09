@@ -15,7 +15,6 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
         <Provider store={store}>
         <Router>
           <main>
@@ -27,7 +26,6 @@ function App() {
           </main>
         </Router>
         </Provider>
-      </header>
     </div>
   );
 }

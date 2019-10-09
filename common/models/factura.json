@@ -7,51 +7,9 @@
     "validateUpsert": true
   },
   "properties": {
-    "cliente": {
-      "nombre": {
-        "type": "string",
-        "required": true
-      },
-      "apellidos": {
-        "type": "string"
-      },
-      "cif": {
-        "type": "string",
-        "required": true
-      },
-      "localidad": {
-        "type": "string",
-        "required": true
-      },
-      "direccion": {
-        "type": "string",
-        "required": true
-      }
-    },
-    "empresa": {
-      "nombre": {
-        "type": "string",
-        "required": true
-      },
-      "cif": {
-        "type": "string",
-        "required": true
-      }
-    },
-    "articulo": {
-      "nombre": {
-        "type": "string",
-        "required": true
-      },
-      "precio": {
-        "type": "number",
-        "required": true
-      },
-      "iva": {
-        "type": "number",
-        "required": true
-      }
-    },
+    "cliente": {},
+    "empresa": {},
+    "articulo": {},
     "numero": {
       "type": "number"
     },
@@ -60,14 +18,11 @@
       "default": "$now"
     },
     "lugar": {
-      "type": "string",
-      "required": true,
-      "default": "Sevilla"
+      "type": "string"
     },
     "descuento": {
       "type": "number",
-      "required": true,
-      "default": 0
+      "default": "Sevilla, Poligono Navisa Nº12"
     }
   },
   "validations": [],

@@ -17,6 +17,8 @@ export default function Client() {
     const [inscribed, setInscribed] = useState([])
     const [client, setClient] = useState([]);
 
+    let clientRow = client[actRowIndex]
+
     function getClients() {
         axios
             .get(`${baseURL}/clientes`)
@@ -106,7 +108,7 @@ export default function Client() {
         text: 'Dirección'
     }, {
         dataField: 'telefono',
-        text: 'Tlf'
+        text: 'Telefono'
     }, {
         dataField: 'email',
         text: 'Email'
@@ -135,16 +137,17 @@ export default function Client() {
             <Row>
                 <Col xs={12}>
                     <AddModal getClientsProps={getClients}  showAddModalProps={showAddModal} addModal={addModal} /> {/*MODAL ADD FAMILIAR TO FAMILY UNIT*/}
-                    <EditModal showEditModalProps={showEditModal} editModal={editModal} /> {/**MODAL EDIT SELECTED FAMILIAR */}
+                    <EditModal clientRow={clientRow}
+                     getClientsProps={getClients} showEditModalProps={showEditModal} editModal={editModal} /> {/**MODAL EDIT SELECTED FAMILIAR */}
                     <Row >
                         <Col>
-                            <Button onClick={showAddModal} style={{ marginLeft: "20px", marginTop: '1rem' }} >Añadir</Button>
+                            <Button outline color="success" onClick={showAddModal} style={{ marginLeft: "20px", marginTop: '2rem' }} >Añadir</Button>
                         </Col>
                         <Col >
-                            <Button onClick={showEditModal} style={{ marginLeft: "10px", marginTop: '1rem' }} >Editar</Button>
+                            <Button outline color="primary" onClick={showEditModal} style={{ marginLeft: "10px", marginTop: '2rem' }} >Modificar</Button>
                         </Col>
                         <Col >
-                            <Button onClick={() => handleDelete()} style={{ marginLeft: "5px", marginTop: '1rem' }} >Eliminar</Button>
+                            <Button outline color="danger" onClick={() => handleDelete()} style={{ marginLeft: "10px", marginTop: '2rem' }} >Eliminar</Button>
                         </Col>
                     </Row>
                 </Col>
@@ -158,7 +161,7 @@ export default function Client() {
                         {
                             props => (
                                 <div>
-                                    <Col style={{ display: 'flex', flexDirection: 'row', marginTop: '1rem', justifyContent: 'center' }}>
+                                    <Col style={{ display: 'flex', flexDirection: 'row', marginTop: '2rem', justifyContent: 'center' }}>
                                         <h3>Buscar {' '}
                                             <SearchBar {...props.searchProps} />
                                         </h3>

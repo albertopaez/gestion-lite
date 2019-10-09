@@ -130,17 +130,17 @@ export default function Invoice() {
                     <EditModal showEditModalProps={showEditModal} editModal={editModal} /> {/**MODAL EDIT SELECTED FAMILIAR */}
                     <Row >
                         <Col>
-                            <Button onClick={showAddModal} style={{ marginLeft: "20px", marginTop: '1rem' }} >Añadir</Button>
+                            <Button outline color="success" onClick={showAddModal} style={{ marginLeft: "20px", marginTop: '2rem' }} >Añadir</Button>
                         </Col>
                         <Col >
-                            <Button onClick={showEditModal} style={{ marginLeft: "10px", marginTop: '1rem' }} >Editar</Button>
+                            <Button outline color="primary" onClick={showEditModal} style={{ marginLeft: "10px", marginTop: '2rem' }} >Modificar</Button>
                         </Col>
                         <Col >
-                            <Button onClick={() => handleDelete()} style={{ marginLeft: "10px", marginTop: '1rem' }} >Eliminar</Button>
+                            <Button outline color="danger" onClick={() => handleDelete()} style={{ marginLeft: "10px", marginTop: '2rem' }} >Eliminar</Button>
                         </Col>
                     </Row>
                 </Col>
-                <Row >
+                <Row style={{marginLeft: '200px'}}>
                     <ToolkitProvider
                         keyField="id"
                         data={products}
@@ -150,7 +150,7 @@ export default function Invoice() {
                         {
                             props => (
                                 <div>
-                                    <Col style={{ display: 'flex', flexDirection: 'row', marginTop: '1rem', justifyContent: 'center' }}>
+                                    <Col style={{ display: 'flex', flexDirection: 'row', marginTop: '2rem', justifyContent: 'center', marginLeft: '40px' }}>
                                         <h3>Buscar {' '}
                                             <SearchBar {...props.searchProps} />
                                         </h3>
