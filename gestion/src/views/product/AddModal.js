@@ -26,7 +26,7 @@ export default function AddModal(props) {
         setPrice();
         setTax();
         setDescription('');
-        props.getProducts()
+        props.getProductsProps()
         props.showAddModalProps()
       })
       .catch(error => {
@@ -35,7 +35,7 @@ export default function AddModal(props) {
   }
 
   function showAddModal() {
-    props.getProducts()
+    props.getProductsProps()
     props.showAddModalProps()
   }
 

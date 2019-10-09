@@ -128,7 +128,7 @@ export default function Product() {
         <Container>
             <Row>
                 <Col xs={12}>
-                    <AddModal getProducts={getProducts} showAddModalProps={showAddModal} addModal={addModal} /> {/*MODAL ADD FAMILIAR TO FAMILY UNIT*/}
+                    <AddModal getProductsProps={getProducts} showAddModalProps={showAddModal} addModal={addModal} /> {/*MODAL ADD FAMILIAR TO FAMILY UNIT*/}
                     <EditModal showEditModalProps={showEditModal} editModal={editModal} /> {/**MODAL EDIT SELECTED FAMILIAR */}
                     <Row >
                         <Col>

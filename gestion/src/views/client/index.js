@@ -134,7 +134,7 @@ export default function Client() {
         <Container>
             <Row>
                 <Col xs={12}>
-                    <AddModal showAddModalProps={showAddModal} addModal={addModal} /> {/*MODAL ADD FAMILIAR TO FAMILY UNIT*/}
+                    <AddModal getClientsProps={getClients}  showAddModalProps={showAddModal} addModal={addModal} /> {/*MODAL ADD FAMILIAR TO FAMILY UNIT*/}
                     <EditModal showEditModalProps={showEditModal} editModal={editModal} /> {/**MODAL EDIT SELECTED FAMILIAR */}
                     <Row >
                         <Col>
