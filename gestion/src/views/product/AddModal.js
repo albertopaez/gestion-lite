@@ -20,7 +20,7 @@ export default function AddModal(props) {
             <Label>Precio unidad: </Label>
             <Input />
           </Col>
-          <Col md="3">
+          {/* <Col md="3">
             <Label>Cantidad </Label>
             <Input type="select" name="select" id="exampleSelect">
                 <option>10</option>
@@ -29,7 +29,7 @@ export default function AddModal(props) {
                 <option>40</option>
                 <option>50</option>
               </Input>
-          </Col>
+          </Col> */}
           <Col md="3"><Label>IVA</Label><Input /></Col>
           <Label for="exampleText">Descripción</Label>
           <Input type="textarea" name="text" id="exampleText" />

@@ -6,6 +6,7 @@ import AddModal from './AddModal';
 import EditModal from './EditModal';
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import { baseURL } from '../../constants';
 
 export default function Client() {
 
@@ -18,7 +19,7 @@ export default function Client() {
 
     function getClients() {
         axios
-            .get(`http://localhost:3000/api/clientes`)
+            .get(`${baseURL}/clientes`)
             .then(response => {
                 console.log(response.data);
                 setClient(response.data);
@@ -93,10 +94,10 @@ export default function Client() {
         text: 'ID Cliente'
     }, {
         dataField: 'nombre',
-        text: 'Nombre cliente'
+        text: 'Nombre'
     },{
         dataField: 'apellidos',
-        text: 'Apellidos cliente'
+        text: 'Apellidos'
     },{
         dataField: 'cif',
         text: 'NIF/NIE'
@@ -115,17 +116,7 @@ export default function Client() {
     }];
 
     const products = client
-
-        // [{
-        //     id: 1,
-        //     name: 'Juan García',
-        //     nif: '27898755g'
-        // }, {
-        //     id: 2,
-        //     name: 'Juan Manuel',
-        //     nif: '47324658k',
-        // }];
-
+    
     const selectRow = {
         mode: 'radio',
         clickToSelect: true,

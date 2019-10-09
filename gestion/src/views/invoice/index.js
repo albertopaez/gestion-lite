@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
 import BootstrapTable from 'react-bootstrap-table-next';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
@@ -6,6 +6,7 @@ import AddModal from './AddModal';
 import EditModal from './EditModal'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import { baseURL } from '../../constants';
 
 export default function Invoice (){
 
@@ -14,6 +15,23 @@ export default function Invoice (){
     const [selected, setSelected] = useState(false);
     const [actRowIndex, setActRowIndex] = useState(false)
     const [inscribed] = useState([])
+    const [invoice, setInvoice] = useState([]);
+
+    function getInvoices() {
+        axios
+            .get(`${baseURL}/facturas`)
+            .then(response => {
+                console.log(response.data);
+                setInvoice(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+    useEffect(() => {
+        getInvoices();
+    }, []);
 
     function showAddModal(){
         setAddModal(!addModal)
@@ -74,22 +92,17 @@ export default function Invoice (){
         dataField: 'id',
         text: 'ID Factura'
     }, {
-        dataField: 'name',
-        text: 'Client Name'
+        dataField: 'nombre',
+        text: 'Nombre Cliente'
     }, {
-        dataField: 'nif',
+        dataField: 'cif',
         text: 'NIE/NIF'
+    }, {
+        dataField: 'fecha',
+        text: 'Fecha'
     }];
 
-    const products = [{
-        id: 1,
-        name: 'Juan García',
-        dni: '27898755g'
-    }, {
-        id: 2,
-        name: 'Juan Manuel',
-        dni: '47324658k',
-    }];
+    const products = invoice
 
     const selectRow = {
         mode: 'radio',

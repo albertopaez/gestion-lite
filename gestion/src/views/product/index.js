@@ -6,6 +6,7 @@ import AddModal from './AddModal';
 import EditModal from './EditModal'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import { baseURL } from '../../constants';
 
 export default function Product (){
 
@@ -17,7 +18,7 @@ export default function Product (){
 
     function getProducts() {
         axios
-            .get(`http://localhost:3000/api/articulos`)
+            .get(`${baseURL}/articulos`)
             .then(response => {
                 console.log(response.data);
                 setProduct(response.data);
@@ -95,9 +96,6 @@ export default function Product (){
     }, {
     dataField: 'precio',
     text: 'Precio Unitario'
-    }, {
-        dataField: 'cantidad',
-        text: 'Cantidad'
     }, {
         dataField: 'iva',
         text: 'IVA'
