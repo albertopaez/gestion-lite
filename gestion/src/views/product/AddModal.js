@@ -1,7 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, Input, Col } from 'reactstrap';
+import axios from 'axios'
+import { baseURL } from '../../constants';
+
 
 export default function AddModal(props) {
+
+  const [name, setName] = useState('');
+  const [price, setPrice] = useState();
+  const [tax, setTax] = useState();
+  const [description, setDescription] = useState('');
+
+  const values = {
+    nombre: name,
+    precio: price,
+    iva: tax,
+    descripcion: description
+  };
+  
+  function submit() {
+    axios.post(`${baseURL}/articulos`, values)
+      .then(response => {
+        console.log(response.data);
+        setName('');
+        setPrice();
+        setTax();
+        setDescription('');
+        props.getProducts()
+        props.showAddModalProps()
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
   function showAddModal() {
     props.getProducts()
@@ -15,11 +46,11 @@ export default function AddModal(props) {
         <FormGroup>
           <Col md="8">
             <Label >Nombre: </Label>
-            <Input />
+            <Input onChange={e => setName(e.target.value)} />
           </Col>
           <Col md="6">
             <Label>Precio unidad: </Label>
-            <Input />
+            <Input onChange={e => setPrice(e.target.value)} />
           </Col>
           {/* <Col md="3">
             <Label>Cantidad </Label>
@@ -31,13 +62,15 @@ export default function AddModal(props) {
                 <option>50</option>
               </Input>
           </Col> */}
-          <Col md="3"><Label>IVA</Label><Input /></Col>
+          <Col md="3"><Label>IVA</Label><Input
+            onChange={e => setTax(e.target.value)} /></Col>
           <Label for="exampleText">Descripción</Label>
-          <Input type="textarea" name="text" id="exampleText" />
+          <Input type="textarea" name="text" id="exampleText"
+            onChange={e => setDescription(e.target.value)} />
         </FormGroup>
       </ModalBody>
       <ModalFooter>
-        <Button color="primary" onClick={showAddModal} >Añadir</Button>{' '}
+        <Button color="primary" onClick={submit} >Añadir</Button>{' '}
         <Button color="neutral" onClick={showAddModal}>Cancel</Button>{' '}
       </ModalFooter>
     </Modal>

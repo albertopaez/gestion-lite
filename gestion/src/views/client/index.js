@@ -90,33 +90,30 @@ export default function Client() {
     const { SearchBar } = Search;
 
     const columns = [{
-        dataField: 'id',
-        text: 'ID Cliente'
-    }, {
         dataField: 'nombre',
         text: 'Nombre'
-    },{
+    }, {
         dataField: 'apellidos',
         text: 'Apellidos'
-    },{
+    }, {
         dataField: 'cif',
         text: 'NIF/NIE'
-    },{
+    }, {
         dataField: 'localidad',
         text: 'Localidad'
-    },{
+    }, {
         dataField: 'direccion',
         text: 'Dirección'
     }, {
         dataField: 'telefono',
         text: 'Tlf'
     }, {
-        dataField: 'fax',
-        text: 'Fax'
+        dataField: 'email',
+        text: 'Email'
     }];
 
     const products = client
-    
+
     const selectRow = {
         mode: 'radio',
         clickToSelect: true,
