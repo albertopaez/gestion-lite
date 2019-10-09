@@ -62,7 +62,7 @@ export default function Invoice (){
           if (result.value) {
             axios({
               method: 'delete',
-              url: `http://localhost:8000/posts/${id}`,
+              url: `${baseURL}/facturas/${invoice[actRowIndex].id}`,
               data: null,
               headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -77,7 +77,7 @@ export default function Invoice (){
                 'El producto ha sido eliminado con éxito.',
                 'success'
               )
-              //fetchUsers()
+              getInvoices()
             })
               .catch(error => {  
                 console.log(error);   

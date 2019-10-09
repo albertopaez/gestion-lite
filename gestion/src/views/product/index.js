@@ -48,9 +48,9 @@ export default function Product (){
         setSelected(!selected)
     }
 
-    const handleDelete = (id) => {
+    const handleDelete = () => {
         Swal.fire({
-          title: '¿Está seguro que desea eliminar el producto?',
+          title: '¿Está seguro que desea eliminar el articulo?',
           text: "Esta acción será irreversible.",
           type: 'warning',
           showCancelButton: true,
@@ -61,7 +61,7 @@ export default function Product (){
           if (result.value) {
             axios({
               method: 'delete',
-              url: `http://localhost:8000/posts/${id}`,
+              url: `${baseURL}/articulos/${product[actRowIndex].id}`,
               data: null,
               headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -73,10 +73,10 @@ export default function Product (){
               console.log(response.data);
               Swal.fire(
                 '¡Eliminado!',
-                'El producto ha sido eliminado con éxito.',
+                'El articulo ha sido eliminado con éxito.',
                 'success'
               )
-              //fetchUsers()
+              getProducts()
             })
               .catch(error => {  
                 console.log(error);   
@@ -123,7 +123,7 @@ export default function Product (){
         <Container>
             <Row>
                 <Col xs={12}>
-                    <AddModal showAddModalProps={showAddModal} addModal={addModal} /> {/*MODAL ADD FAMILIAR TO FAMILY UNIT*/}
+                    <AddModal getProducts={getProducts} showAddModalProps={showAddModal} addModal={addModal} /> {/*MODAL ADD FAMILIAR TO FAMILY UNIT*/}
                     <EditModal showEditModalProps={showEditModal} editModal={editModal} /> {/**MODAL EDIT SELECTED FAMILIAR */}
                     <Row >
                         <Col>

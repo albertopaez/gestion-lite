@@ -50,7 +50,7 @@ export default function Client() {
         setSelected(!selected)
     }
 
-    const handleDelete = (id) => {
+    const handleDelete = () => {
         Swal.fire({
             title: '¿Está seguro que desea eliminar el cliente?',
             text: "Esta acción será irreversible.",
@@ -63,7 +63,7 @@ export default function Client() {
             if (result.value) {
                 axios({
                     method: 'delete',
-                    url: `http://localhost:8000/posts/${id}`,
+                    url: `${baseURL}/clientes/${client[actRowIndex].id}`,
                     data: null,
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
@@ -78,7 +78,7 @@ export default function Client() {
                         'El cliente ha sido eliminado con éxito.',
                         'success'
                     )
-                    //fetchUsers()
+                    getClients()
                 })
                     .catch(error => {
                         console.log(error);

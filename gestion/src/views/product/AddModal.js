@@ -4,6 +4,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, I
 export default function AddModal(props) {
 
   function showAddModal() {
+    props.getProducts()
     props.showAddModalProps()
   }
 
